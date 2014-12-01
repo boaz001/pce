@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<productprocessors_descriptor>
+  <productprocessors>
+    <productprocessor name="Unpacker_V1">
+      <input id="0" name="i_goods" type="MaterialOnPallet"/>
+      <output id="0" name="o_water" type="water"/>
+      <output id="1" name="o_starch" type="starch"/>
+      <output id="2" name="o_hops" type="hops"/>
+      <output id="3" name="o_yeast" type="yeast"/>
+    </productprocessor>
+    <productprocessor name="Brewmaster_V1">
+      <input id="0" name="i_water" type="water"/>
+      <input id="1" name="i_starch" type="starch"/>
+      <input id="2" name="i_hops" type="hops"/>
+      <input id="3" name="i_yeast" type="yeast"/>
+      <input id="4" name="i_water-starch-ratio" type="double"/>
+      <input id="5" name="i_hops-yeast-ratio" type="double"/>
+      <output id="0" name="o_brewage" type="brewage"/>
+    </productprocessor>
+    <productprocessor name="Bottler_V1">
+      <input id="0" name="i_brewage" type="brewage"/>
+      <output id="0" name="o_bottle" type="bottle"/>
+    </productprocessor>
+    <productprocessor name="Labeler_V1">
+      <input id="0" name="i_bottle" type="bottle"/>
+      <input id="1" name="i_label-name" type="string"/>
+      <input id="2" name="i_put-discount-label" optional="true" type="bool"/>
+      <output id="0" name="o_bottle" type="bottle"/>
+    </productprocessor>
+    <productprocessor name="Packer_V1">
+      <input id="0" name="i_bottle" type="bottle"/>
+      <input id="1" name="i_nr-of-boxes-per-pallet" type="short"/>
+      <input id="2" name="i_box-stack-option" type="vector&lt;short&gt;"/>
+      <output id="0" name="o_package" type="EndProductOnPallet"/>
+    </productprocessor>
+  </productprocessors>
+</productprocessors_descriptor>

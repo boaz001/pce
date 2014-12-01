@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<productconfig product="Madbeer-factory">
+  <assembler>
+    <port id="0" mode="complex" productid="161"/>
+  </assembler>
+  <exporter>
+    <port id="0" productid="21"/>
+  </exporter>
+  <configuration>
+    <statics>
+      <static id="WATER-STARCH-RATIO" type="double">0.5</static>
+      <static id="HOPS-YEAST-RATIO" type="double">2.1</static>
+      <static id="LABEL-NAME" type="string">Madbeer</static>
+      <static id="PUT-DISCOUNT-LABEL" type="bool">true</static>
+      <static id="NR-OF-BOXES-PER-PALLET" type="short">12</static>
+      <static id="BOX-STACK-OPTION" type="vector&lt;short&gt;">2,4,8</static>
+    </statics>
+    <connections>
+      <connection dst="unpacker:i_goods" src="assembler:OUT"/>
+      <connection dst="brewmaster:i_water" src="unpacker:o_water"/>
+      <connection dst="brewmaster:i_starch" src="unpacker:o_starch"/>
+      <connection dst="brewmaster:i_hops" src="unpacker:o_hops"/>
+      <connection dst="brewmaster:i_yeast" src="unpacker:o_yeast"/>
+      <connection dst="brewmaster:i_water-starch-ratio" src="WATER-STARCH-RATIO"/>
+      <connection dst="brewmaster:i_hops-yeast-ratio" src="HOPS-YEAST-RATIO"/>
+      <connection dst="bottler:i_brewage" src="brewmaster:o_brewage"/>
+      <connection dst="labeler:i_bottle" src="bottler:o_bottle"/>
+      <connection dst="labeler:i_label-name" src="LABEL-NAME"/>
+      <connection dst="labeler:i_put-discount-label" src="PUT-DISCOUNT-LABEL"/>
+      <connection dst="packer:i_bottle" src="labeler:o_bottle"/>
+      <connection dst="packer:i_nr-of-boxes-per-pallet" src="NR-OF-BOXES-PER-PALLET"/>
+      <connection dst="packer:i_box-stack-option" src="BOX-STACK-OPTION"/>
+      <connection dst="exporter:IN" src="packer:o_package"/>
+    </connections>
+    <productprocessors>
+      <productprocessor id="assembler">
+        <output id="0" name="OUT" type="MaterialOnPallet"/>
+      </productprocessor>
+      <productprocessor id="Unpacker" type="Unpacker_V1"/>
+      <productprocessor id="Brewmaster" type="Brewmaster_V1"/>
+      <productprocessor id="Bottler" type="Bottler_V1"/>
+      <productprocessor id="Labeler" type="Labeler_V1"/>
+      <productprocessor id="Packer" type="Packer_V1"/>
+      <productprocessor id="exporter">
+        <input id="0" name="IN" type="EndProductOnPallet"/>
+      </productprocessor>
+    </productprocessors>
+  </configuration>
+</productconfig>
