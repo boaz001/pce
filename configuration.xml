@@ -36,11 +36,11 @@
       <productprocessor id="assembler">
         <output id="0" name="OUT" type="MaterialOnPallet"/>
       </productprocessor>
-      <productprocessor id="Unpacker" type="Unpacker_V1"/>
-      <productprocessor id="Brewmaster" type="Brewmaster_V1"/>
-      <productprocessor id="Bottler" type="Bottler_V1"/>
-      <productprocessor id="Labeler" type="Labeler_V1"/>
-      <productprocessor id="Packer" type="Packer_V1"/>
+      <productprocessor id="unpacker" type="Unpacker_V1"/>
+      <productprocessor id="brewmaster" type="Brewmaster_V1"/>
+      <productprocessor id="bottler" type="Bottler_V1"/>
+      <productprocessor id="labeler" type="Labeler_V1"/>
+      <productprocessor id="packer" type="Packer_V1"/>
       <productprocessor id="exporter">
         <input id="0" name="IN" type="EndProductOnPallet"/>
       </productprocessor>
